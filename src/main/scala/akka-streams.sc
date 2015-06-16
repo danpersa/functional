@@ -6,12 +6,9 @@ import akka.util.Timeout
 implicit val sys = ActorSystem("TheDemo")
 implicit val mat = ActorFlowMaterializer()
 implicit val timeout = Timeout(3000)
-
 import sys.dispatcher
-
 val numbers = Source(List(1, 2, 4))
 val strings = Source(List("a", "b", "c"))
-
 strings.runForeach(println)
 
 //  val composite = Source() { implicit b =>
@@ -23,8 +20,9 @@ strings.runForeach(println)
 
 val fast = Source(() => Iterator from 0)
 
-numbers.map(x => {
+fast.runForeach(println)
+
+fast.map(x => {
   Thread.sleep(1000);
   x
 }).runForeach(println)
-

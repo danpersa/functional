@@ -1,3 +1,8 @@
 target
 .idea
 project/target
+.sbtserver
+RUNNING_PID
+project/play-fork-run.sbt
+project/sbt-ui.sbt
+project/.sbtserver.lock
